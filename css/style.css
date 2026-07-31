@@ -1,0 +1,1120 @@
+/* ============================================
+   style.css — Main Stylesheet
+   Project: Bodrum Corner Official Website
+   Mobile-First Approach (base = mobile)
+   Sources: PRD-002, PRD-004, PRD-005
+   ============================================ */
+
+/* ——— Reset & Base ——— */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px — base for mobile */
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed); /* 1.9 — more legible on mobile */
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-normal);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+}
+
+/* ——— Skip Link (Accessibility — Sprint 11) ——— */
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-sm);
+  z-index: 10000;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-sm);
+}
+
+/* ——— Typography ——— */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text-primary);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-xl);
+}
+
+p {
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed); /* 1.9 — more legible */
+  margin-bottom: var(--space-xs);
+}
+
+/* ——— Section Title ——— */
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-title h2 {
+  font-size: var(--text-3xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-title p {
+  font-size: var(--text-base);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ——— Container ——— */
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+.section-padding {
+  padding: 80px 0; /* 80px — generous breathing room between sections (Fix #5) */
+}
+
+/* ——— Buttons (PRD-002 §7, PRD-004 §11) ——— */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  background-color: var(--color-primary);
+  color: #000000;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  padding: 16px 36px; /* Larger touch target */
+  border-radius: var(--radius-button);
+  border: none;
+  transition: background-color var(--transition-normal),
+              transform var(--transition-normal);
+}
+
+.primary-button:hover {
+  background-color: var(--color-primary-light);
+  transform: scale(1.03);
+}
+
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  padding: 16px 36px; /* Larger touch target */
+  border-radius: var(--radius-button);
+  border: 2px solid var(--color-primary);
+  transition: background-color var(--transition-normal),
+              color var(--transition-normal),
+              transform var(--transition-normal);
+}
+
+.secondary-button:hover {
+  background-color: var(--color-primary);
+  color: #000000;
+  transform: scale(1.03);
+}
+
+/* ——— Cards (PRD-002 §8, PRD-004 §12) ——— */
+
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  padding: var(--space-md);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ============================================
+   NAVBAR (PRD-004 §3)
+   ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--navbar-height);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-sm);
+  transition: background-color var(--transition-normal),
+              box-shadow var(--transition-normal);
+  background-color: transparent;
+}
+
+.navbar.scrolled {
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-navbar);
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+}
+
+.navbar-logo span {
+  color: var(--color-text-primary);
+}
+
+.navbar-menu {
+  display: none;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.navbar-link {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+  position: relative;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--color-primary);
+}
+
+.navbar-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+}
+
+.navbar-cta {
+  display: none;
+}
+
+.navbar-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;  /* 44px minimum touch target (Sprint 10) */
+  height: 44px; /* 44px minimum touch target (Sprint 10) */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px; /* Ensure tap area is comfortable */
+}
+
+.navbar-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-normal),
+              opacity var(--transition-normal);
+}
+
+.navbar-toggle.active .navbar-toggle-bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg); /* Adjusted for 44px size */
+}
+
+.navbar-toggle.active .navbar-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active .navbar-toggle-bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg); /* Adjusted for 44px size */
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--navbar-height));
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal),
+              visibility var(--transition-normal);
+  z-index: 999;
+}
+
+.mobile-menu.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-link {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   HERO SECTION (PRD-004 §4)
+   ============================================ */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0.55) 0%,
+    rgba(15, 15, 15, 0.75) 100%
+  ); /* Lighter overlay for more impactful background (Fix #1) */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--space-sm);
+  max-width: 860px; /* Wider hero content area (Fix #1) */
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 8vw, 4.5rem); /* Responsive — scales from 40px mobile to 72px desktop (Fix #1) */
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.5px;
+}
+
+.hero-content h1 span {
+  color: var(--color-primary);
+}
+
+.hero-subtitle {
+  font-size: var(--text-lg); /* 20px — larger subtitle */
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl); /* More space below subtitle */
+  line-height: var(--leading-normal);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hero-buttons .primary-button,
+.hero-buttons .secondary-button {
+  width: 100%;
+  max-width: 340px; /* Wider CTA buttons (Fix #1) */
+  font-size: var(--text-lg); /* 18px — bigger button text */
+  padding: 20px 44px; /* Extra padding for bigger touch target (Fix #1) */
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  animation: scrollBounce 1.5s ease infinite;
+}
+
+.scroll-indicator span {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.scroll-indicator i {
+  color: var(--color-primary);
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+/* ============================================
+   ABOUT SECTION (PRD-004 §5)
+   ============================================ */
+
+.about-section {
+  background-color: var(--color-background);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.about-text h2 {
+  font-size: var(--text-3xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.about-text p {
+  margin-bottom: var(--space-md);
+}
+
+.about-image {
+  width: 100%;
+  height: 320px;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Feature highlights */
+.about-highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.about-highlight-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.about-highlight-text h3 {
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.about-highlight-text p {
+  font-size: var(--text-sm);
+}
+
+/* ============================================
+   SIGNATURE MENU SECTION (PRD-004 §6)
+   ============================================ */
+
+.menu-section {
+  background-color: var(--color-background);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.menu-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal);
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.menu-card-image {
+  width: 100%;
+  height: 280px; /* Taller images (Fix #3) */
+  overflow: hidden;
+  background-color: var(--color-surface-light);
+}
+
+.menu-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.menu-card:hover .menu-card-image img {
+  transform: scale(1.05);
+}
+
+.menu-card-body {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Make all cards same height (Fix #3) */
+  min-height: 180px; /* Minimum height for consistency (Fix #3) */
+}
+
+.menu-card-body h3 {
+  font-size: var(--text-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.menu-card-body p {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-sm);
+  flex-grow: 1; /* Push price to bottom (Fix #3) */
+  line-height: var(--leading-normal);
+}
+
+.menu-card-price {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl); /* 24px — bigger price (Fix #3) */
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-surface-light); /* Visual separator above price (Fix #3) */
+  margin-top: auto; /* Push to bottom of card */
+}
+
+.menu-cta {
+  text-align: center;
+}
+
+.menu-cta .primary-button {
+  width: 100%; /* Full-width on mobile */
+  max-width: 400px;
+}
+
+/* ============================================
+   GALLERY SECTION (PRD-004 §7)
+   ============================================ */
+
+.gallery-section {
+  background-color: var(--color-background);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 columns on mobile (Fix #4) */
+  gap: var(--space-sm);
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-image);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-surface);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(212, 175, 55, 0.15);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+  opacity: 1;
+}
+
+.gallery-item-overlay i {
+  color: var(--color-text-primary);
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal),
+              visibility var(--transition-normal);
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-image {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: var(--radius-card);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-round);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-normal);
+}
+
+.lightbox-close:hover {
+  background-color: var(--color-surface-light);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-round);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-normal);
+}
+
+.lightbox-nav:hover {
+  background-color: var(--color-surface-light);
+}
+
+.lightbox-prev {
+  left: var(--space-md);
+}
+
+.lightbox-next {
+  right: var(--space-md);
+}
+
+/* ============================================
+   REVIEWS SECTION (PRD-004 §8)
+   ============================================ */
+
+.reviews-section {
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+.reviews-slider-wrapper {
+  position: relative;
+}
+
+.reviews-slider {
+  display: flex;
+  transition: transform var(--transition-slow);
+}
+
+.reviews-track {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.review-card {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.review-card .card {
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.review-card-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-round);
+  overflow: hidden;
+  margin: 0 auto var(--space-sm);
+  background-color: var(--color-surface-light);
+}
+
+.review-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-card-name {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.review-card-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+}
+
+.review-card-text {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+/* Review navigation */
+.reviews-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.reviews-nav-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-round);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-normal),
+              color var(--transition-normal);
+}
+
+.reviews-nav-btn:hover {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+/* ============================================
+   CONTACT SECTION (PRD-004 §9)
+   ============================================ */
+
+.contact-section {
+  background-color: var(--color-background);
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.contact-item-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-button);
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.contact-item-text h3 {
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2xs);
+}
+
+.contact-item-text p,
+.contact-item-text a {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.contact-item-text a:hover {
+  color: var(--color-primary);
+}
+
+.contact-map {
+  width: 100%;
+  height: 300px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background-color: var(--color-surface);
+}
+
+.contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.contact-cta {
+  text-align: center;
+  margin-top: var(--space-md);
+}
+
+/* ============================================
+   FOOTER (PRD-004 §10)
+   ============================================ */
+
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-surface-light);
+  padding: 80px 0 var(--space-lg); /* More top padding for richer footer (Fix #6) */
+}
+
+.footer-top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.footer-column-brand .footer-logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl); /* Bigger logo in footer (Fix #6) */
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.footer-column-brand .footer-logo span {
+  color: var(--color-text-primary);
+}
+
+.footer-column-brand .footer-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed); /* 1.9 — more legible (Fix #6) */
+  max-width: 340px;
+}
+
+.footer-column h4 {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: var(--space-md);
+}
+
+.footer-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.footer-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal); /* Better line-height (Fix #6) */
+}
+
+.footer-info-item i {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  margin-top: 2px;
+}
+
+.footer-info-item a {
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+}
+
+.footer-info-item a:hover {
+  color: var(--color-primary);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.footer-link {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-normal);
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.footer-social-link {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-round);
+  background-color: var(--color-surface-light);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-normal),
+              color var(--transition-normal);
+}
+
+.footer-social-link:hover {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+.footer-bottom {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-surface-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.footer-bottom p {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   INLINE SVG ICONS (Brand icons not in Lucide)
+   ============================================ */
+
+.icon-instagram {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+}
+
+.icon-instagram svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================
+   SCROLL ANIMATIONS
+   ============================================ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition-normal),
+              transform var(--transition-normal);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 500ms ease,
+              transform 500ms ease;
+}
+
+.slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

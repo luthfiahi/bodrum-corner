@@ -1,0 +1,79 @@
+/* ============================================
+   variables.css — CSS Custom Properties
+   Project: Bodrum Corner Official Website
+   Source: PRD-002 Design System
+   ============================================ */
+
+:root {
+  /* ——— Colors (PRD-002 §3) ——— */
+  --color-primary: #D4AF37;          /* Gold — CTA, highlights, accents */
+  --color-primary-light: #E2C64A;    /* Lighter gold — hover state */
+  --color-secondary: #F5F1E8;       /* Cream — light backgrounds */
+  --color-background: #0F0F0F;      /* Background — main site bg */
+  --color-surface: #1A1A1A;         /* Surface — cards, panels */
+  --color-surface-light: #252525;    /* Lighter surface — hover, borders */
+  --color-text-primary: #FFFFFF;    /* White — main text */
+  --color-text-secondary: #A0A0A0;  /* Gray — secondary text, captions */
+  --color-overlay: rgba(15, 15, 15, 0.7); /* Dark overlay for hero/images */
+  --color-shadow: rgba(0, 0, 0, 0.3);     /* Card shadow */
+
+  /* ——— Typography (PRD-002 §4) ——— */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+
+  /* Font sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;      /* 16px — minimum body size */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;      /* 40px */
+  --text-5xl: 3.25rem;     /* 52px */
+  --text-6xl: 4rem;        /* 64px */
+
+  /* Font weights */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Line heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.5;
+  --leading-normal: 1.7;
+  --leading-relaxed: 1.9;
+
+  /* ——— Spacing System — 8px base (PRD-002 §5) ——— */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 80px;   /* 80px — increased from 64px for more breathing room */
+  --space-3xl: 112px;  /* 112px — increased from 96px for section spacing */
+
+  /* ——— Border Radius (PRD-002 §6) ——— */
+  --radius-sm: 8px;
+  --radius-button: 12px;
+  --radius-card: 16px;
+  --radius-image: 20px;
+  --radius-round: 50%;
+
+  /* ——— Shadows ——— */
+  --shadow-card: 0 4px 20px var(--color-shadow);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-navbar: 0 2px 16px rgba(0, 0, 0, 0.3);
+
+  /* ——— Transitions (PRD-002, PRD-004 §16) ——— */
+  --transition-fast: 200ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* ——— Layout ——— */
+  --max-width: 1200px;
+  --navbar-height: 72px;
+}

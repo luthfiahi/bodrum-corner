@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0F0F0F"/>
+  <text x="32" y="28" font-family="serif" font-size="18" font-weight="700" fill="#D4AF37" text-anchor="middle">BC</text>
+  <line x1="20" y1="34" x2="44" y2="34" stroke="#D4AF37" stroke-width="2"/>
+  <text x="32" y="48" font-family="sans-serif" font-size="8" font-weight="400" fill="#A0A0A0" text-anchor="middle">CORNER</text>
+</svg>

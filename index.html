@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F0F0F">
+  <meta name="color-scheme" content="dark">
+
+  <!-- SEO Meta Tags (PRD-005 §11) -->
+  <title>Bodrum Corner — Authentic Turkish Restaurant in Bali</title>
+  <meta name="description" content="Bodrum Corner brings the authentic flavors of Turkey to Bali. Explore our signature menu, gallery, and reserve your table via WhatsApp.">
+  <meta name="keywords" content="Turkish restaurant, Bali, Bodrum Corner, kebab, baklava, Turkish cuisine, Mediterranean food">
+  <link rel="canonical" href="https://luthfiahi.github.io/bodrum-corner/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bodrum Corner — Authentic Turkish Restaurant">
+  <meta property="og:description" content="Experience authentic Turkish cuisine in the heart of Bali. Signature dishes, warm ambiance, and unforgettable flavors.">
+  <meta property="og:image" content="https://luthfiahi.github.io/bodrum-corner/assets/images/og-image.png">
+  <meta property="og:url" content="https://luthfiahi.github.io/bodrum-corner/">
+  <meta property="og:site_name" content="Bodrum Corner">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bodrum Corner — Authentic Turkish Restaurant">
+  <meta name="twitter:description" content="Experience authentic Turkish cuisine in the heart of Bali. Signature dishes, warm ambiance, and unforgettable flavors.">
+  <meta name="twitter:image" content="https://luthfiahi.github.io/bodrum-corner/assets/images/og-image.png">
+
+  <!-- Structured Data (JSON-LD) — Restaurant Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Bodrum Corner",
+    "description": "Authentic Turkish restaurant in Bali serving traditional kebabs, baklava, pide, and more.",
+    "url": "https://luthfiahi.github.io/bodrum-corner/",
+    "image": "https://luthfiahi.github.io/bodrum-corner/assets/images/og-image.png",
+    "servesCuisine": ["Turkish", "Mediterranean"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Batu Mejan, Canggu",
+      "addressLocality": "Badung, Bali",
+      "postalCode": "80361",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -8.6504,
+      "longitude": 115.1274
+    },
+    "telephone": "+6281234567890",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00",
+      "closes": "23:00"
+    },
+    "priceRange": "$$",
+    "hasMenu": {
+      "@type": "Menu",
+      "hasMenuSection": [
+        {
+          "@type": "MenuSection",
+          "name": "Signature Dishes",
+          "hasMenuItem": [
+            {"@type": "MenuItem", "name": "Iskender Kebab", "offers": {"@type": "Offer", "price": "185000", "priceCurrency": "IDR"}},
+            {"@type": "MenuItem", "name": "Mixed Grill Platter", "offers": {"@type": "Offer", "price": "295000", "priceCurrency": "IDR"}},
+            {"@type": "MenuItem", "name": "Lahmacun", "offers": {"@type": "Offer", "price": "95000", "priceCurrency": "IDR"}},
+            {"@type": "MenuItem", "name": "Pistachio Baklava", "offers": {"@type": "Offer", "price": "75000", "priceCurrency": "IDR"}},
+            {"@type": "MenuItem", "name": "Classic Hummus", "offers": {"@type": "Offer", "price": "65000", "priceCurrency": "IDR"}},
+            {"@type": "MenuItem", "name": "Cheese Pide", "offers": {"@type": "Offer", "price": "85000", "priceCurrency": "IDR"}}
+          ]
+        }
+      ]
+    },
+    "sameAs": [
+      "https://instagram.com/bodrumcorner"
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+
+  <!-- DNS Prefetch & Preconnect — Performance (Sprint 11) -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="dns-prefetch" href="https://www.google.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts (PRD-002 §4) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Preload Hero Background Image (Sprint 11 — Performance) -->
+  <link rel="preload" href="assets/images/hero-bg.png" as="image" type="image/png" fetchpriority="high">
+
+  <!-- Stylesheets (variables.css FIRST — PRD-005 §6) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Skip to Content (Accessibility — Sprint 11) -->
+  <a href="#home" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================
+       NAVBAR (PRD-003 §4, PRD-004 §3)
+       ============================================ -->
+  <header role="banner">
+    <nav class="navbar" id="navbar">
+      <div class="navbar-container">
+        <!-- Logo -->
+        <a href="#home" class="navbar-logo">
+          Bodrum <span>Corner</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <ul class="navbar-menu">
+          <li><a href="#home" class="navbar-link active" data-section="home">Home</a></li>
+          <li><a href="#about" class="navbar-link" data-section="about">About</a></li>
+          <li><a href="#menu" class="navbar-link" data-section="menu">Menu</a></li>
+          <li><a href="#gallery" class="navbar-link" data-section="gallery">Gallery</a></li>
+          <li><a href="#contact" class="navbar-link" data-section="contact">Contact</a></li>
+          <li>
+            <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+               class="primary-button navbar-cta"
+               target="_blank"
+               rel="noopener noreferrer">
+              <i data-lucide="phone" style="width:18px;height:18px;"></i>
+              Reserve via WhatsApp
+            </a>
+          </li>
+        </ul>
+
+        <!-- Hamburger Toggle (Mobile) -->
+        <button class="navbar-toggle" id="navbarToggle" aria-label="Toggle navigation menu">
+          <span class="navbar-toggle-bar"></span>
+          <span class="navbar-toggle-bar"></span>
+          <span class="navbar-toggle-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mobile-menu-link active" data-section="home">Home</a>
+      <a href="#about" class="mobile-menu-link" data-section="about">About</a>
+      <a href="#menu" class="mobile-menu-link" data-section="menu">Menu</a>
+      <a href="#gallery" class="mobile-menu-link" data-section="gallery">Gallery</a>
+      <a href="#contact" class="mobile-menu-link" data-section="contact">Contact</a>
+      <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+         class="primary-button"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="margin-top: var(--space-sm);">
+        <i data-lucide="phone" style="width:18px;height:18px;"></i>
+        Reserve via WhatsApp
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ============================================
+       MAIN CONTENT
+       ============================================ -->
+  <main>
+
+    <!-- ——— HERO SECTION (PRD-004 §4) ——— -->
+    <section class="hero-section" id="home">
+      <img src="assets/images/hero-bg.png"
+           alt="Bodrum Corner restaurant ambiance with warm Turkish decor"
+           class="hero-background"
+           fetchpriority="high">
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content fade-in">
+        <h1>Bodrum <span>Corner</span></h1>
+        <p class="hero-subtitle">Authentic Turkish Cuisine in the Heart of Bali</p>
+        <div class="hero-buttons">
+          <a href="#menu" class="primary-button">
+            <i data-lucide="utensils" style="width:18px;height:18px;"></i>
+            View Menu
+          </a>
+          <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+             class="secondary-button"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+            Reserve via WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <i data-lucide="chevron-down" style="width:24px;height:24px;"></i>
+      </div>
+    </section>
+
+
+    <!-- ——— ABOUT SECTION (PRD-004 §5) ——— -->
+    <section class="about-section section-padding" id="about">
+      <div class="container">
+        <div class="section-title slide-up">
+          <h2>Our Story</h2>
+          <p>A culinary journey from the shores of the Aegean to the island of Bali</p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text slide-up">
+            <h2>Where Turkey Meets Bali</h2>
+            <p>
+              Bodrum Corner was born from a passion for sharing the rich and vibrant flavors
+              of Turkish cuisine with the world. Our recipes have been passed down through
+              generations, bringing the warmth of Mediterranean hospitality to the tropical
+              paradise of Bali.
+            </p>
+            <p>
+              Every dish we serve tells a story — from the sizzle of our charcoal-grilled
+              kebabs to the delicate layers of our handmade baklava. We source the freshest
+              local ingredients and blend them with imported Turkish spices to create an
+              authentic dining experience you won't find anywhere else on the island.
+            </p>
+          </div>
+
+          <div class="about-image slide-up">
+            <img src="assets/images/about-restaurant.png"
+                 alt="Bodrum Corner restaurant interior with warm lighting and Turkish decor"
+                 loading="lazy">
+          </div>
+        </div>
+
+        <!-- Feature Highlights -->
+        <div class="about-highlights" style="margin-top: var(--space-xl);">
+          <div class="about-highlight fade-in">
+            <div class="about-highlight-icon">
+              <i data-lucide="flame" style="width:24px;height:24px;"></i>
+            </div>
+            <div class="about-highlight-text">
+              <h3>Authentic Recipes</h3>
+              <p>Traditional Turkish dishes prepared with generations-old family recipes.</p>
+            </div>
+          </div>
+
+          <div class="about-highlight fade-in">
+            <div class="about-highlight-icon">
+              <i data-lucide="leaf" style="width:24px;height:24px;"></i>
+            </div>
+            <div class="about-highlight-text">
+              <h3>Fresh Ingredients</h3>
+              <p>Locally sourced produce combined with premium imported Turkish spices.</p>
+            </div>
+          </div>
+
+          <div class="about-highlight fade-in">
+            <div class="about-highlight-icon">
+              <i data-lucide="heart" style="width:24px;height:24px;"></i>
+            </div>
+            <div class="about-highlight-text">
+              <h3>Warm Hospitality</h3>
+              <p>Mediterranean warmth meets Balinese charm for an unforgettable experience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ——— SIGNATURE MENU SECTION (PRD-004 §6) ——— -->
+    <section class="menu-section section-padding" id="menu">
+      <div class="container">
+        <div class="section-title slide-up">
+          <h2>Signature Menu</h2>
+          <p>A curated selection of our most beloved Turkish dishes</p>
+        </div>
+
+        <div class="menu-grid">
+
+          <!-- Menu Card 1 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-iskender.png"
+                   alt="Iskender Kebab — tender grilled meat over pita bread with tomato sauce and yogurt"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Iskender Kebab</h3>
+              <p>Tender charcoal-grilled lamb over warm pita bread, drizzled with rich tomato sauce and creamy yogurt.</p>
+              <span class="menu-card-price">IDR 185K</span>
+            </div>
+          </article>
+
+          <!-- Menu Card 2 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-mix-grill.png"
+                   alt="Mixed Grill Platter — assorted grilled meats with rice and salad"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Mixed Grill Platter</h3>
+              <p>A generous selection of lamb chops, chicken shish, kofte, and adana kebab served with rice and fresh salad.</p>
+              <span class="menu-card-price">IDR 295K</span>
+            </div>
+          </article>
+
+          <!-- Menu Card 3 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-lahmacun.png"
+                   alt="Lahmacun — crispy Turkish flatbread with minced meat, herbs, and spices"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Lahmacun</h3>
+              <p>Thin crispy flatbread topped with spiced minced meat, fresh herbs, and a squeeze of lemon.</p>
+              <span class="menu-card-price">IDR 95K</span>
+            </div>
+          </article>
+
+          <!-- Menu Card 4 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-baklava.png"
+                   alt="Baklava — layers of flaky pastry with pistachio and honey syrup"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Pistachio Baklava</h3>
+              <p>Delicate layers of hand-stretched phyllo pastry filled with crushed pistachios and soaked in honey syrup.</p>
+              <span class="menu-card-price">IDR 75K</span>
+            </div>
+          </article>
+
+          <!-- Menu Card 5 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-hummus.png"
+                   alt="Hummus — creamy chickpea dip with olive oil and paprika"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Classic Hummus</h3>
+              <p>Silky smooth chickpea dip blended with tahini, fresh lemon juice, and a drizzle of extra virgin olive oil.</p>
+              <span class="menu-card-price">IDR 65K</span>
+            </div>
+          </article>
+
+          <!-- Menu Card 6 -->
+          <article class="menu-card slide-up">
+            <div class="menu-card-image">
+              <img src="assets/images/menu-pide.png"
+                   alt="Turkish Pide — boat-shaped flatbread with cheese and egg"
+                   loading="lazy">
+            </div>
+            <div class="menu-card-body">
+              <h3>Cheese Pide</h3>
+              <p>Traditional boat-shaped Turkish flatbread loaded with melted kasar cheese, butter, and a fresh egg on top.</p>
+              <span class="menu-card-price">IDR 85K</span>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="menu-cta fade-in">
+          <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+             class="primary-button"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+            Reserve via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ——— GALLERY SECTION (PRD-004 §7) ——— -->
+    <section class="gallery-section section-padding" id="gallery">
+      <div class="container">
+        <div class="section-title slide-up">
+          <h2>Gallery</h2>
+          <p>A glimpse into the Bodrum Corner experience</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item fade-in" data-index="0">
+            <img src="assets/images/gallery-1.png"
+                 alt="Warm interior of Bodrum Corner with traditional Turkish lanterns"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+
+          <div class="gallery-item fade-in" data-index="1">
+            <img src="assets/images/gallery-2.png"
+                 alt="Platter of freshly grilled Turkish kebabs with garnish"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+
+          <div class="gallery-item fade-in" data-index="2">
+            <img src="assets/images/gallery-3.png"
+                 alt="Traditional Turkish tea served in ornate glass cups"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+
+          <div class="gallery-item fade-in" data-index="3">
+            <img src="assets/images/gallery-4.png"
+                 alt="Outdoor seating area with fairy lights and tropical plants"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+
+          <div class="gallery-item fade-in" data-index="4">
+            <img src="assets/images/gallery-5.png"
+                 alt="Chef preparing fresh dough for handmade Turkish pide"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+
+          <div class="gallery-item fade-in" data-index="5">
+            <img src="assets/images/gallery-6.png"
+                 alt="Artisan baklava presentation with crushed pistachios and honey"
+                 loading="lazy">
+            <div class="gallery-item-overlay">
+              <i data-lucide="maximize-2" style="width:28px;height:28px;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">
+          <i data-lucide="x" style="width:24px;height:24px;"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">
+          <i data-lucide="chevron-left" style="width:24px;height:24px;"></i>
+        </button>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery full size image">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">
+          <i data-lucide="chevron-right" style="width:24px;height:24px;"></i>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ——— REVIEWS SECTION (PRD-004 §8) ——— -->
+    <section class="reviews-section section-padding" id="reviews">
+      <div class="container">
+        <div class="section-title slide-up">
+          <h2>What Our Guests Say</h2>
+          <p>Real experiences from those who have dined with us</p>
+        </div>
+
+        <div class="reviews-slider-wrapper">
+          <div class="reviews-slider" id="reviewsSlider">
+            <div class="reviews-track" id="reviewsTrack">
+
+              <!-- Review 1 -->
+              <article class="review-card">
+                <div class="card">
+                  <div class="review-card-avatar">
+                    <img src="assets/images/review-avatar-1.png"
+                         alt="Photo of Sarah M."
+                         loading="lazy">
+                  </div>
+                  <h3 class="review-card-name">Sarah M.</h3>
+                  <div class="review-card-rating">
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                  </div>
+                  <p class="review-card-text">
+                    "Absolutely the best Turkish food in Bali! The Iskender Kebab was
+                    incredible — perfectly tender and full of flavor. The ambiance is
+                    warm and inviting. We'll definitely be back!"
+                  </p>
+                </div>
+              </article>
+
+              <!-- Review 2 -->
+              <article class="review-card">
+                <div class="card">
+                  <div class="review-card-avatar">
+                    <img src="assets/images/review-avatar-2.png"
+                         alt="Photo of Marco R."
+                         loading="lazy">
+                  </div>
+                  <h3 class="review-card-name">Marco R.</h3>
+                  <div class="review-card-rating">
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                  </div>
+                  <p class="review-card-text">
+                    "Found this gem on Google Maps and it exceeded all expectations.
+                    The mixed grill platter was huge and delicious. The staff is
+                    incredibly friendly and the decor is beautiful. Highly recommended!"
+                  </p>
+                </div>
+              </article>
+
+              <!-- Review 3 -->
+              <article class="review-card">
+                <div class="card">
+                  <div class="review-card-avatar">
+                    <img src="assets/images/review-avatar-3.png"
+                         alt="Photo of Ayumi T."
+                         loading="lazy">
+                  </div>
+                  <h3 class="review-card-name">Ayumi T.</h3>
+                  <div class="review-card-rating">
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                  </div>
+                  <p class="review-card-text">
+                    "The baklava here is the best I've had outside of Turkey! Every
+                    layer is perfect. The hummus is creamy and fresh. A wonderful
+                    hidden spot in Bali that every foodie must visit."
+                  </p>
+                </div>
+              </article>
+
+              <!-- Review 4 -->
+              <article class="review-card">
+                <div class="card">
+                  <div class="review-card-avatar">
+                    <img src="assets/images/review-avatar-4.png"
+                         alt="Photo of James L."
+                         loading="lazy">
+                  </div>
+                  <h3 class="review-card-name">James L.</h3>
+                  <div class="review-card-rating">
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                  </div>
+                  <p class="review-card-text">
+                    "We came as a family of five and everyone loved their meal.
+                    The pide was crispy and cheesy, the kebabs were juicy, and the
+                    Turkish tea was the perfect way to end the meal. True quality!"
+                  </p>
+                </div>
+              </article>
+
+              <!-- Review 5 -->
+              <article class="review-card">
+                <div class="card">
+                  <div class="review-card-avatar">
+                    <img src="assets/images/review-avatar-5.png"
+                         alt="Photo of Lisa K."
+                         loading="lazy">
+                  </div>
+                  <h3 class="review-card-name">Lisa K.</h3>
+                  <div class="review-card-rating">
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                    <i data-lucide="star" style="width:16px;height:16px;fill:var(--color-primary);"></i>
+                  </div>
+                  <p class="review-card-text">
+                    "Stumbled upon this place during our Bali trip and it was a
+                    delightful surprise. Authentic flavors, beautiful presentation,
+                    and the owner made us feel like family. A must-visit in Canggu!"
+                  </p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <!-- Review Navigation -->
+          <div class="reviews-nav">
+            <button class="reviews-nav-btn" id="reviewsPrev" aria-label="Previous review">
+              <i data-lucide="chevron-left" style="width:20px;height:20px;"></i>
+            </button>
+            <button class="reviews-nav-btn" id="reviewsNext" aria-label="Next review">
+              <i data-lucide="chevron-right" style="width:20px;height:20px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ——— CONTACT SECTION (PRD-004 §9) ——— -->
+    <section class="contact-section section-padding" id="contact">
+      <div class="container">
+        <div class="section-title slide-up">
+          <h2>Visit Us</h2>
+          <p>We'd love to welcome you. Come experience the taste of Turkey in Bali.</p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-info slide-up">
+
+            <!-- Address -->
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i data-lucide="map-pin" style="width:22px;height:22px;"></i>
+              </div>
+              <div class="contact-item-text">
+                <h3>Address</h3>
+                <p>Jl. Batu Mejan, Canggu<br>Badung, Bali 80361, Indonesia</p>
+              </div>
+            </div>
+
+            <!-- Operating Hours -->
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i data-lucide="clock" style="width:22px;height:22px;"></i>
+              </div>
+              <div class="contact-item-text">
+                <h3>Opening Hours</h3>
+                <p>Monday – Sunday<br>11:00 AM — 11:00 PM</p>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <i data-lucide="phone" style="width:22px;height:22px;"></i>
+              </div>
+              <div class="contact-item-text">
+                <h3>WhatsApp</h3>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+                  +62 812-3456-7890
+                </a>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="contact-item">
+              <div class="contact-item-icon">
+                <span class="icon-instagram" style="width:22px;height:22px;"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+              </div>
+              <div class="contact-item-text">
+                <h3>Instagram</h3>
+                <a href="https://instagram.com/bodrumcorner" target="_blank" rel="noopener noreferrer">
+                  @bodrumcorner
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Maps -->
+          <div class="contact-map slide-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d115.1274!3d-8.6504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwMzknMDEuNCJTIDExNcKwMDcnMzguNiJF!5e0!3m2!1sen!2sid!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Bodrum Corner location on Google Maps">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="contact-cta fade-in">
+          <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+             class="primary-button"
+             target="_blank"
+             rel="noopener noreferrer">
+            <i data-lucide="message-circle" style="width:18px;height:18px;"></i>
+            Reserve via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============================================
+       FOOTER (PRD-004 §10)
+       ============================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <!-- Footer Top — Columns -->
+      <div class="footer-top">
+        <div class="footer-columns">
+
+          <!-- Column 1: Brand & Description -->
+          <div class="footer-column footer-column-brand">
+            <div class="footer-logo">
+              Bodrum <span>Corner</span>
+            </div>
+            <p class="footer-description">
+              Authentic Turkish cuisine in the heart of Bali. Bringing the flavors
+              of the Aegean to the Island of the Gods since 2024.
+            </p>
+            <!-- Social Media Icons -->
+            <div class="footer-social">
+              <a href="https://wa.me/6281234567890"
+                 class="footer-social-link"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Contact us on WhatsApp">
+                <i data-lucide="message-circle" style="width:20px;height:20px;"></i>
+              </a>
+              <a href="https://instagram.com/bodrumcorner"
+                 class="footer-social-link"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Follow us on Instagram">
+                <span class="icon-instagram" style="width:20px;height:20px;"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+              </a>
+              <a href="https://maps.google.com/?q=Bodrum+Corner+Bali"
+                 class="footer-social-link"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Find us on Google Maps">
+                <i data-lucide="map-pin" style="width:20px;height:20px;"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Information -->
+          <div class="footer-column">
+            <h4>Information</h4>
+            <div class="footer-info-list">
+              <div class="footer-info-item">
+                <i data-lucide="map-pin" style="width:16px;height:16px;"></i>
+                <span>Jl. Batu Mejan, Canggu, Bali</span>
+              </div>
+              <div class="footer-info-item">
+                <i data-lucide="clock" style="width:16px;height:16px;"></i>
+                <span>Mon – Sun, 11AM – 11PM</span>
+              </div>
+              <div class="footer-info-item">
+                <i data-lucide="phone" style="width:16px;height:16px;"></i>
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+                  +62 812-3456-7890
+                </a>
+              </div>
+              <div class="footer-info-item">
+                <i data-lucide="at-sign" style="width:16px;height:16px;"></i>
+                <a href="https://instagram.com/bodrumcorner" target="_blank" rel="noopener noreferrer">
+                  @bodrumcorner
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Quick Links -->
+          <div class="footer-column">
+            <h4>Quick Links</h4>
+            <div class="footer-links">
+              <a href="#home" class="footer-link">Home</a>
+              <a href="#about" class="footer-link">About</a>
+              <a href="#menu" class="footer-link">Signature Menu</a>
+              <a href="#gallery" class="footer-link">Gallery</a>
+              <a href="#contact" class="footer-link">Contact</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer Bottom — Copyright & CTA -->
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> Bodrum Corner. All rights reserved.</p>
+        <a href="https://wa.me/6281234567890?text=Hello%20Bodrum%20Corner%2C%20I%20would%20like%20to%20make%20a%20reservation"
+           class="secondary-button"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="font-size: var(--text-sm); padding: 10px 24px;">
+          <i data-lucide="message-circle" style="width:16px;height:16px;"></i>
+          Reserve via WhatsApp
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript Files (PRD-005 §7) — defer for non-blocking load (Sprint 11) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="js/animation.js" defer></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+</body>
+</html>
